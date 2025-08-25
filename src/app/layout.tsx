@@ -4,6 +4,7 @@ import "./globals.css";
 import TheMainLayout from "@/components/TheMainLayout";
 import AppQueryClientProvider from "@/lib/query-client.lib";
 import { ThemeProvider } from "@/components/ThemProvider";
+import { NEXT_PUBLIC_APP_URL } from "@/constants/config.constant";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -18,7 +19,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "My Store",
   description: "The e-commerce store for all your needs",
-  metadataBase: new URL("https://9fnx8qn4-3000.asse.devtunnels.ms"),
+  metadataBase: new URL(NEXT_PUBLIC_APP_URL),
   openGraph: {
     title: "My Store",
     description: "The e-commerce store for all your needs",

@@ -4,6 +4,7 @@ import Image from "next/image";
 import { getProductBySlug } from "@/services/product.service";
 import ShippingDetail from "@/components/ShippngDetail";
 import { Button } from "@/components/ui/button";
+import { NEXT_PUBLIC_APP_URL } from "@/constants/config.constant";
 
 interface ProductPageProps {
   params: Promise<{ productSlug: string }>;
@@ -37,7 +38,7 @@ export async function generateMetadata({
         },
       ],
       type: "website",
-      url: `https://9fnx8qn4-3000.asse.devtunnels.ms/products/${product.slug}`,
+      url: `${NEXT_PUBLIC_APP_URL}/products/${product.slug}`,
     },
   };
 }

@@ -1,4 +1,5 @@
 import Products from "@/components/Products";
+import { NEXT_PUBLIC_APP_URL } from "@/constants/config.constant";
 import { getCategoryBySlug } from "@/services/category.service";
 import { Metadata } from "next";
 import Image from "next/image";
@@ -25,7 +26,7 @@ export async function generateMetadata({
       title: `Products in ${category.name}`,
       description: `Browse all ${category.name} available on our store.`,
       type: "website",
-      url: `https://9fnx8qn4-3000.asse.devtunnels.ms/categories/${category.slug}`,
+      url: `${NEXT_PUBLIC_APP_URL}/categories/${category.slug}`,
       images: [
         {
           url: `/images/${category.slug}.png`,
