@@ -3,6 +3,7 @@ import { Metadata } from "next";
 import Image from "next/image";
 import { getProductBySlug } from "@/services/product.service";
 import ShippingDetail from "@/components/ShippngDetail";
+import { Button } from "@/components/ui/button";
 
 interface ProductPageProps {
   params: Promise<{ productSlug: string }>;
@@ -62,15 +63,13 @@ export default async function ProductPage({ params }: ProductPageProps) {
             className="rounded-lg shadow-md"
           />
         </div>
-        <div className="md:w-1/2 flex flex-col justify-center">
-          <h1 className="text-4xl font-bold mb-4">{product.name}</h1>
-          <p className="text-gray-600 mb-6">{product.description}</p>
-          <p className="text-2xl font-semibold text-green-600 mb-4">
+        <div className="md:w-1/2 flex flex-col justify-center gap-4">
+          <h1 className="text-4xl font-bold">{product.name}</h1>
+          <p className="text-gray-600 mb-2">{product.description}</p>
+          <p className="text-2xl font-semibold text-green-600">
             ${product.price}
           </p>
-          <button className="bg-blue-500 text-white font-bold py-2 px-4 rounded-full hover:bg-blue-600 transition-colors">
-            Add to Cart
-          </button>
+          <Button>Add to Cart</Button>
           <ShippingDetail productSlug={product.slug} />
         </div>
       </div>

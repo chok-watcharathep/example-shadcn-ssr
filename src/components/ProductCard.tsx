@@ -1,28 +1,33 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Product } from "@/interfaces/product.interface";
+import { Card, CardContent, CardFooter, CardHeader } from "./ui/card";
+import { Button } from "./ui/button";
 
 const ProductCard = ({ product }: { product: Product }) => {
   return (
-    <div className="border rounded-lg p-4 text-center shadow-sm hover:shadow-md transition-shadow">
-      <Link href={`/products/${product.slug}`}>
-        <Image
-          src={`/images/${product.slug}.png`}
-          alt={product.name}
-          width={250}
-          height={250}
-          className="rounded-lg mb-4"
-        />
-      </Link>
-      <h2 className="text-xl font-semibold mb-2">{product.name}</h2>
-      <p className="text-gray-600">${product.price}</p>
-      <Link
-        href={`/products/${product.slug}`}
-        className="mt-4 text-blue-500 hover:underline"
-      >
-        View Details
-      </Link>
-    </div>
+    <Card className="pt-0">
+      <CardHeader className="px-0">
+        <Link href={`/products/${product.slug}`}>
+          <Image
+            src={`/images/${product.slug}.png`}
+            alt={product.name}
+            width={250}
+            height={250}
+            className="rounded-t-xl  w-full"
+          />
+        </Link>
+      </CardHeader>
+      <CardContent>
+        <h2 className="text-xl font-semibold mb-2">{product.name}</h2>
+        <p className="text-gray-600">${product.price}</p>
+      </CardContent>
+      <CardFooter>
+        <Button asChild>
+          <Link href={`/products/${product.slug}`}>View Details</Link>
+        </Button>
+      </CardFooter>
+    </Card>
   );
 };
 

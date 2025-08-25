@@ -1,6 +1,8 @@
 "use client";
 
 import { useGetShipping } from "@/hooks/use-get-shippng.hook";
+import { Card, CardContent } from "./ui/card";
+import Loading from "./Loading";
 
 interface ShippingDetailProps {
   productSlug: string;
@@ -11,31 +13,37 @@ export default function ShippingDetail({ productSlug }: ShippingDetailProps) {
 
   if (isLoading) {
     return (
-      <div className="mt-4 p-4 rounded-lg bg-gray-800 animate-pulse">
-        <p className="text-gray-500">Calculating shipping...</p>
-      </div>
+      <Card>
+        <CardContent>
+          <Loading />
+        </CardContent>
+      </Card>
     );
   }
 
   if (isError || !shipping) {
     return (
-      <div className="mt-4 p-4 rounded-lg bg-red-800">
-        <p className="text-red-600">Failed to get shipping details.</p>
-      </div>
+      <Card>
+        <CardContent>
+          <p className="text-red-600">Failed to get shipping details.</p>
+        </CardContent>
+      </Card>
     );
   }
 
   return (
-    <div className="mt-4 p-4 rounded-lg bg-gray-800">
-      <h3 className="text-xl font-semibold mb-2">Shipping Information</h3>
-      <p>
-        <span className="font-bold">Shipping Rate:</span>{" "}
-        {shipping.isFreeShipping ? "Free" : `$${shipping.rate.toFixed(2)}`}
-      </p>
-      <p>
-        <span className="font-bold">Estimated Delivery:</span>{" "}
-        {shipping.deliveryTime}
-      </p>
-    </div>
+    <Card>
+      <CardContent className="flex flex-col gap-1">
+        <h3 className="text-xl font-semibold ">Shipping Information</h3>
+        <p>
+          <span className="font-bold">Shipping Rate:</span>{" "}
+          {shipping.isFreeShipping ? "Free" : `$${shipping.rate.toFixed(2)}`}
+        </p>
+        <p>
+          <span className="font-bold">Estimated Delivery:</span>{" "}
+          {shipping.deliveryTime}
+        </p>
+      </CardContent>
+    </Card>
   );
 }

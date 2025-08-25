@@ -2,6 +2,8 @@
 
 import ProductCard from "@/components/ProductCard";
 import { useGetProducts } from "@/hooks/use-get-products.hook";
+import { notFound } from "next/navigation";
+import Loading from "./Loading";
 
 interface ProductsProps {
   categorySlug: string;
@@ -12,18 +14,12 @@ const Products = ({ categorySlug }: ProductsProps) => {
 
   if (isLoading) {
     return (
-      <div className="mt-4 p-4 rounded-lg bg-gray-800 animate-pulse">
-        <p className="text-gray-500">Loading products...</p>
-      </div>
+    <Loading />
     );
   }
 
   if (isError) {
-    return (
-      <div className="mt-4 p-4 rounded-lg bg-red-800">
-        <p className="text-red-600">Failed to get products.</p>
-      </div>
-    );
+    throw new Error("Failed to get products");
   }
 
   return (
