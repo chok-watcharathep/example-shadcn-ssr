@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Layout from "@/components/Layout";
+import TheMainLayout from "@/components/TheMainLayout";
 import AppQueryClientProvider from "@/lib/query-client.lib";
 import { ThemeProvider } from "@/components/ThemProvider";
 
@@ -51,7 +51,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <AppQueryClientProvider>
-            <Layout>{children}</Layout>
+            <TheMainLayout>{children}</TheMainLayout>
           </AppQueryClientProvider>
         </ThemeProvider>
       </body>

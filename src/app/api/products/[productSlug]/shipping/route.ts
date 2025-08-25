@@ -1,6 +1,5 @@
 import {
-  getProductBySlug,
-  getShippingByProductSlug,
+  getShippingByProductSlug
 } from "@/__mock__/data.mock";
 import { NextRequest } from "next/server";
 

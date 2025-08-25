@@ -2,7 +2,6 @@
 
 import ProductCard from "@/components/ProductCard";
 import { useGetProducts } from "@/hooks/use-get-products.hook";
-import { notFound } from "next/navigation";
 import Loading from "./Loading";
 
 interface ProductsProps {

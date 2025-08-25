@@ -1,4 +1,4 @@
-import { getCategoryBySlug, getProductBySlug } from "@/__mock__/data.mock";
+import { getCategoryBySlug } from "@/__mock__/data.mock";
 import { NextRequest } from "next/server";
 
 export async function GET(

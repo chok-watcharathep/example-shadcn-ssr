@@ -1,17 +1,8 @@
 import { Category } from "@/interfaces/category.interface";
-
-const API_URL = "http://localhost:3000";
+import axiosInstance from "@/lib/axios.lib";
 
 export async function getCategories(): Promise<Category[]> {
-  const res = await fetch(`${API_URL}/api/categories`, {
-    cache: "no-store",
-  });
-
-  if (!res.ok) {
-    return [];
-  }
-
-  const data = await res.json();
+  const { data } = await axiosInstance.get("/api/categories");
 
   return data;
 }
@@ -19,15 +10,7 @@ export async function getCategories(): Promise<Category[]> {
 export async function getCategoryBySlug(
   categorySlug: string
 ): Promise<Category | undefined> {
-  const res = await fetch(`${API_URL}/api/categories/${categorySlug}`, {
-    cache: "no-store",
-  });
-
-  if (!res.ok) {
-    return undefined;
-  }
-
-  const data = await res.json();
+  const { data } = await axiosInstance.get(`/api/categories/${categorySlug}`);
 
   return data;
 }

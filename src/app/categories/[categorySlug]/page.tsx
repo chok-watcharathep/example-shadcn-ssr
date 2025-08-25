@@ -1,11 +1,8 @@
-import { notFound } from "next/navigation";
+import Products from "@/components/Products";
+import { getCategoryBySlug } from "@/services/category.service";
 import { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
-import { getCategoryBySlug } from "@/services/category.service";
-import { getProducts } from "@/services/product.service";
-import ProductCard from "@/components/ProductCard";
-import Products from "@/components/Products";
+import { notFound } from "next/navigation";
 
 interface CategoryPageProps {
   params: Promise<{ categorySlug: string }>;
@@ -48,8 +45,6 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
   if (!category) {
     notFound();
   }
-
-  const products = await getProducts(requestParams.categorySlug);
 
   return (
     <main className="container mx-auto p-4">
