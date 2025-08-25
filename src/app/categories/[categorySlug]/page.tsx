@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { getCategoryBySlug } from "@/services/category.service";
 import { getProducts } from "@/services/product.service";
+import ProductCard from "@/components/ProductCard";
 
 interface CategoryPageProps {
   params: Promise<{ categorySlug: string }>;
@@ -67,28 +68,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {products.length > 0 ? (
           products.map((product) => (
-            <div
-              key={product.id}
-              className="border rounded-lg p-4 text-center shadow-sm hover:shadow-md transition-shadow"
-            >
-              <Link href={`/products/${product.slug}`}>
-                <Image
-                  src={`/images/${product.slug}.png`}
-                  alt={product.name}
-                  width={250}
-                  height={250}
-                  className="rounded-lg mb-4"
-                />
-              </Link>
-              <h2 className="text-xl font-semibold mb-2">{product.name}</h2>
-              <p className="text-gray-600">${product.price}</p>
-              <Link
-                href={`/products/${product.slug}`}
-                className="mt-4 text-blue-500 hover:underline"
-              >
-                View Details
-              </Link>
-            </div>
+            <ProductCard key={product.id} product={product} />
           ))
         ) : (
           <p className="col-span-full text-center text-gray-500">

@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import Image from "next/image";
 import { getProductBySlug } from "@/services/product.service";
+import ShippingDetail from "./ShippngDetail";
 
 interface ProductPageProps {
   params: Promise<{ productSlug: string }>;
@@ -70,6 +71,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
           <button className="bg-blue-500 text-white font-bold py-2 px-4 rounded-full hover:bg-blue-600 transition-colors">
             Add to Cart
           </button>
+          <ShippingDetail productSlug={product.slug} />
         </div>
       </div>
     </main>

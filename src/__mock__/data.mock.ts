@@ -1,5 +1,5 @@
 import { Category } from "@/interfaces/category.interface";
-import { Product } from "@/interfaces/product.interface";
+import { Product, Shipping } from "@/interfaces/product.interface";
 
 export const categories: Category[] = [
   { slug: "shirts", name: "Shirts", image: "/images/shirts.png" },
@@ -60,4 +60,29 @@ export function getCategoryBySlug(categorySlug: string): Category | undefined {
 
 export function getProductBySlug(productSlug: string): Product | undefined {
   return products.find((product) => product.slug === productSlug);
+}
+
+export function getShippingByProductSlug(
+  productSlug: string
+): Shipping | undefined {
+  const product = getProductBySlug(productSlug);
+
+  if (!product) {
+    return undefined;
+  }
+
+  // Mock shipping logic based on price
+  if (product.price >= 50) {
+    return {
+      rate: 0,
+      deliveryTime: "3-5 business days",
+      isFreeShipping: true,
+    };
+  } else {
+    return {
+      rate: 5.99,
+      deliveryTime: "5-7 business days",
+      isFreeShipping: false,
+    };
+  }
 }
