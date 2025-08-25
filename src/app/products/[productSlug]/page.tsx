@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import Image from "next/image";
 import { getProductBySlug } from "@/services/product.service";
-import ShippingDetail from "./ShippngDetail";
+import ShippingDetail from "@/components/ShippngDetail";
 
 interface ProductPageProps {
   params: Promise<{ productSlug: string }>;

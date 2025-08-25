@@ -3,8 +3,12 @@
 import ProductCard from "@/components/ProductCard";
 import { useGetProducts } from "@/hooks/use-get-products.hook";
 
-const Products = () => {
-  const { data: products, isLoading, isError } = useGetProducts("");
+interface ProductsProps {
+  categorySlug: string;
+}
+
+const Products = ({ categorySlug }: ProductsProps) => {
+  const { data: products, isLoading, isError } = useGetProducts(categorySlug);
 
   if (isLoading) {
     return (
