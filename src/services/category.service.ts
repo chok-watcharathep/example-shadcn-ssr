@@ -3,7 +3,9 @@ import { Category } from "@/interfaces/category.interface";
 const API_URL = "http://localhost:3000";
 
 export async function getCategories(): Promise<Category[]> {
-  const res = await fetch(`${API_URL}/api/categories`);
+  const res = await fetch(`${API_URL}/api/categories`, {
+    cache: "no-store",
+  });
 
   if (!res.ok) {
     return [];
@@ -17,7 +19,9 @@ export async function getCategories(): Promise<Category[]> {
 export async function getCategoryBySlug(
   categorySlug: string
 ): Promise<Category | undefined> {
-  const res = await fetch(`${API_URL}/api/categories/${categorySlug}`);
+  const res = await fetch(`${API_URL}/api/categories/${categorySlug}`, {
+    cache: "no-store",
+  });
 
   if (!res.ok) {
     return undefined;

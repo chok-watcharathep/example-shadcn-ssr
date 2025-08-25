@@ -22,6 +22,20 @@ export async function generateMetadata({
   return {
     title: `Products in ${category.name}`,
     description: `Browse all ${category.name} available on our store.`,
+    openGraph: {
+      title: `Products in ${category.name}`,
+      description: `Browse all ${category.name} available on our store.`,
+      type: "website",
+      url: `https://9fnx8qn4-3000.asse.devtunnels.ms/categories/${category.slug}`,
+      images: [
+        {
+          url: `/images/${category.slug}.png`,
+          width: 800,
+          height: 600,
+          alt: category.name,
+        },
+      ],
+    },
   };
 }
 

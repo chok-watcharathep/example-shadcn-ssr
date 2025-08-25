@@ -35,7 +35,7 @@ export async function generateMetadata({
         },
       ],
       type: "website",
-      url: `http://localhost:3000/products/${product.slug}`,
+      url: `https://9fnx8qn4-3000.asse.devtunnels.ms/products/${product.slug}`,
     },
   };
 }
