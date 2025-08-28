@@ -3,13 +3,14 @@
 import ProductCard from "@/components/ProductCard";
 import { useGetProducts } from "@/hooks/use-get-products.hook";
 import Loading from "./Loading";
+import { Button } from "./ui/button";
 
 interface ProductsProps {
   categorySlug: string;
 }
 
 const Products = ({ categorySlug }: ProductsProps) => {
-  const { data: products, isLoading, isError } = useGetProducts(categorySlug);
+  const { data: products, isLoading, isError, refetch } = useGetProducts(categorySlug);
 
   if (isLoading) {
     return (
@@ -28,6 +29,7 @@ const Products = ({ categorySlug }: ProductsProps) => {
         {products?.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}
+        <Button onClick={() => refetch()}>Refetch</Button>
       </div>
     </div>
   );

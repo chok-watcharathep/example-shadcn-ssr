@@ -5,6 +5,7 @@ import { getProductBySlug } from "@/services/product.service";
 import ShippingDetail from "@/components/ShippngDetail";
 import { Button } from "@/components/ui/button";
 import { NEXT_PUBLIC_APP_URL } from "@/constants/config.constant";
+import ExampleClient from "@/components/ExampleClient";
 
 interface ProductPageProps {
   params: Promise<{ productSlug: string }>;
@@ -74,6 +75,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
           <ShippingDetail productSlug={product.slug} />
         </div>
       </div>
+      <ExampleClient />
     </main>
   );
 }
